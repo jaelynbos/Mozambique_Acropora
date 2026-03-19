@@ -16,22 +16,22 @@ module load samtools
 OUTDIR=/scratch/jbos/Moz_intermediates/beagle_contigs_spp1
 
 first=1
-for f in ${OUTDIR}/Acorpora_moz.*.beagle.gz; do
+for f in ${OUTDIR}/Acropora_moz.*.beagle.gz; do
     if [ $first -eq 1 ]; then
         zcat $f
         first=0
     else
         zcat $f | tail -n +2  # skip header line for all subsequent files
     fi
-done | bgzip > ${OUTDIR}/Acorpora_moz_all.beagle.gz
+done | bgzip > ${OUTDIR}/Acropora_moz_all.beagle.gz
 
 
 first=1
-for f in ${OUTDIR}/Acorpora_moz.*.mafs.gz; do
+for f in ${OUTDIR}/Acropora_moz.*.mafs.gz; do
     if [ $first -eq 1 ]; then
         zcat $f
         first=0
     else
         zcat $f | tail -n +2  # skip header line for all subsequent files
     fi
-done | bgzip > ${OUTDIR}/Acorpora_moz_all.mafs.gz
+done | bgzip > ${OUTDIR}/Acropora_moz_all.mafs.gz
