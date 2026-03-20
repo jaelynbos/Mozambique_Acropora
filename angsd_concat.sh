@@ -13,7 +13,7 @@
 
 module load samtools
 
-OUTDIR=/scratch/jbos/Moz_intermediates/beagle_contigs_spp1
+OUTDIR=/scratch/jbos/Moz_intermediates/beagle_contigs_spp1_strict
 
 first=1
 for f in ${OUTDIR}/Acropora_moz.*.beagle.gz; do

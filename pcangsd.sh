@@ -15,4 +15,4 @@ module load pcangsd
 
 #pcangsd -b /scratch/jbos/Moz_intermediates/beagle_contigs/Acorpora_moz_all.beagle.gz  --maf 0.001 --threads 16 --it 1000 --out angsd_acropora_pca
 
-pcangsd -b /scratch/jbos/Moz_intermediates/beagle_contigs_spp1/Acropora_moz_all.beagle.gz  --maf 0.001 --threads 16 --it 1000 --out /scratch/jbos/Moz_intermediates/beagle_contigs_spp1/angsd_acropora_pca
+pcangsd -b /scratch/jbos/Moz_intermediates/beagle_contigs_spp1_strict/Acropora_moz_all.beagle.gz  --maf 0.001 --threads 16 --it 1000 --out /scratch/jbos/Moz_intermediates/beagle_contigs_spp1_strict/angsd_acropora_pca
