@@ -1,74 +1,43 @@
 #!/bin/bash
 
 #SBATCH --job-name=angsd
-#SBATCH -o angsd_out/angsd-%j.out
-#SBATCH --partition=lab-mpinsky
-#SBATCH --qos=pi-mpinsky
-#SBATCH --account=pi-mpinsky
+#SBATCH -o angsd_out/angsd_b-%A_%a.out
 #SBATCH --cpus-per-task=2
 #SBATCH --mail-user=jbos@ucsc.edu
 #SBATCH --mail-type=ALL
 #SBATCH --mem=64G
 #SBATCH --time=720:00:00
-#SBATCH --array=1-481%12
+#SBATCH --array=0-853%12
 
+#Should be through 853
 module load samtools
 module load ohpc
 module load angsd/0.940
 
-#REF=/home/jbos/ncbi/amuricata_ncbi.fna
-#BAMLIST=/home/jbos/Moz_reads/spp1_inds.txt
-#OUTDIR=/scratch/jbos/Moz_intermediates/beagle_contigs_spp1
-#CONTIG_LIST=/home/jbos/Moz_reads/contig_list.txt
+REF=/home/jbos/ncbi/GCF_013753865.1_Amil_v2.1_genomic.fna
+BAMLIST=/home/jbos/Moz_reads/bamlist_amillepora.txt
+OUTDIR=/scratch/jbos/Moz_aligned_mil/angsd1_output
+CONTIG_LIST=/home/jbos/Moz_reads/contig_list_Amillepora.txt
 
-#mkdir $OUTDIR
-#mkdir -p ${OUTDIR}/logs
-
-#CONTIG=$(sed -n "${SLURM_ARRAY_TASK_ID}p" ${CONTIG_LIST})
-
-#angsd -bam ${BAMLIST} \
-#    -GL 1 \
-#    -doGlf 2 \
-#    -doMajorMinor 1 \
-#	-doGeno 1 \
-#	-doPost 1 \
-#    -doMaf 1 \
-#    -minMapQ 25 -minQ 30 \
-#    -SNP_pval 1e-6 \
-#    -minInd 2 \
-#   -uniqueOnly 1 -remove_bads 1 \
-#    -skipTriallelic 0 \
-#    -doCounts 1 -doDepth 1 -dumpCounts 1 -setmaxdepth 150 -setMinDepth 3 \
-#    -P 2 \
-#    -ref ${REF} \
-#    -r ${CONTIG} \
-#    -out ${OUTDIR}/Acropora_moz.${CONTIG}
-
-
-
-REF=/home/jbos/ncbi/amuricata_ncbi.fna
-BAMLIST=/home/jbos/Moz_reads/spp1_inds_strict.txt
-OUTDIR=/scratch/jbos/Moz_intermediates/beagle_contigs_spp1_strict
-CONTIG_LIST=/home/jbos/Moz_reads/contig_list.txt
-
-mkdir $OUTDIR
-mkdir -p ${OUTDIR}/logs
+MINDEPTH=$(( $(wc -l < $BAMLIST) * 5 ))
+MAXDEPTH=$(( $(wc -l < $BAMLIST) * 150 ))
+MININD=$(( $(wc -l < $BAMLIST) * 9 / 10 ))
 
 CONTIG=$(sed -n "${SLURM_ARRAY_TASK_ID}p" ${CONTIG_LIST})
 
 angsd -bam ${BAMLIST} \
     -GL 1 \
     -doGlf 2 \
-    -doMajorMinor 1 \
-	-doGeno 1 \
+    -doMajorMinor 2 \
 	-doPost 1 \
     -doMaf 1 \
+	-minMaf 0.01 \
     -minMapQ 25 -minQ 30 \
     -SNP_pval 1e-6 \
-    -minInd 2 \
-   -uniqueOnly 1 -remove_bads 1 \
+    -minInd $MININD \
+    -uniqueOnly 1 -remove_bads 1 \
     -skipTriallelic 0 \
-    -doCounts 1 -doDepth 1 -dumpCounts 1 -setmaxdepth 150 -setMinDepth 3 \
+    -doCounts 1 -doDepth 1 -dumpCounts 1 -setmaxdepth $MAXDEPTH -setMinDepth $MINDEPTH \
     -P 2 \
     -ref ${REF} \
     -r ${CONTIG} \

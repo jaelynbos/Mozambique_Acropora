@@ -6,17 +6,17 @@
 #SBATCH --qos=pi-mpinsky
 #SBATCH --account=pi-mpinsky
 #SBATCH --cpus-per-task=2
-#SBATCH --mail-user=jbos@ucsc.edu
+#SBATCH --mail-user=jbos@ucsc.educ
 #SBATCH --mail-type=ALL
 #SBATCH --mem=64G
 #SBATCH --time=24:00:00
 
 module load samtools
 
-OUTDIR=/scratch/jbos/Moz_intermediates/beagle_contigs_spp1_strict
+OUTDIR=/scratch/jbos/Moz_aligned_mil/angsd1_output
 
 first=1
-for f in ${OUTDIR}/Acropora_moz.*.beagle.gz; do
+for f in ${OUTDIR}/Acropora_moz.N*beagle.gz; do
     if [ $first -eq 1 ]; then
         zcat $f
         first=0
@@ -25,9 +25,8 @@ for f in ${OUTDIR}/Acropora_moz.*.beagle.gz; do
     fi
 done | bgzip > ${OUTDIR}/Acropora_moz_all.beagle.gz
 
-
 first=1
-for f in ${OUTDIR}/Acropora_moz.*.mafs.gz; do
+for f in ${OUTDIR}/Acropora_moz.N*.mafs.gz; do
     if [ $first -eq 1 ]; then
         zcat $f
         first=0
@@ -35,3 +34,4 @@ for f in ${OUTDIR}/Acropora_moz.*.mafs.gz; do
         zcat $f | tail -n +2  # skip header line for all subsequent files
     fi
 done | bgzip > ${OUTDIR}/Acropora_moz_all.mafs.gz
+
