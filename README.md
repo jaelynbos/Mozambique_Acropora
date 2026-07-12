@@ -40,7 +40,7 @@ R version 4.3.3 \
 Python version 3.9.25 
 
 ## Bioinformatic pre-processing
-# Pre-processing _Acropora_ samples from Mozambique. 
+### Pre-processing _Acropora_ samples from Mozambique. 
 Reads from Mozambique are de-multiplexed and merged across lanes. Bioinformatic processing should be conducted using the following scripts in order:
 
 1.1 First trim using trim_funcs.sh. Requires: Fastp, Parallel, and Multiqc. \
@@ -51,7 +51,7 @@ Reads from Mozambique are de-multiplexed and merged across lanes. Bioinformatic 
 1.6 Sort and index SAMfiles and convert to BAMfiles with samtools_loop.sh Requires: SAMtools. \
 1.7 Measure sequencing depth across sites for each individual, as well as mean and median depth across all individuals with samtools_depth.sh. Requires: SAMtools and GNU Datamash. \
 
-# Pre-processing _Acropora_ samples from American Samoa. 
+### Pre-processing _Acropora_ samples from American Samoa. 
 Reads dowloaded from NCBI are de-multiplexed and merged across lanes. Bioinformatic processing should be conducted using the following scripts in order, all found in the /Acropora_hyacinthus_pipeline folder: \
 
 1.8 First trim using trim_funcs_Ahyacinthus.sh. Requires: Fastp, Parallel, and Multiqc. \
@@ -60,7 +60,7 @@ Reads dowloaded from NCBI are de-multiplexed and merged across lanes. Bioinforma
 1.11 Re-pair unpaired reads using repair_Ahyacinthus.sh. Requires: BBtools. \
 1.12 Map genes to _Acropora_millepora_ reference using bwa_amillepora_Ahyacinthus.sh. Requires: BWA. \
 
-# Pre-processing _Isopora_ outgroup.
+### Pre-processing _Isopora_ outgroup.
 Bioinformatic processing should be conducted using the following scripts in order, all found in the /isopora_pipeline folder: \
 1.13 First trim using trim_funcs_isopora.sh. Requires: Fastp, Parallel, and Multiqc. \
 1.14 Deduplicate using clumpify_isopora.sh. Requires: Clumpify (from BBtools). \
