@@ -137,7 +137,7 @@ This didn't really work out. \
 3.7 Make consensus FASTA files for samples from American Samoa with fasta_consensus_Ahyacinthus.sh. Requires: BWA \
 3.8 Make consensus FASTA file for DB with fasta_consensus_DB.sh. Requires: BWA \
 3.9 Make consensus FASTA file for DA_North with fasta_consensus_DA_North.sh. Requires: BWA \
-3.10 Make consensus FASTA file for DA_South with fasta_consensus_DA_South.sh. Requires: BWA \
+3.10 Make consensus FASTA file for DA_South with fasta_consensus_DA_South.sh. Requires: BWA
 
 # Phylogenetic trees
 3.11 Align first gene from each chromosome across samples with mafft_bychrom.sh. Requires: SAMtools and MAFFT. \
