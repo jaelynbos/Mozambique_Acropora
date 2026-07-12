@@ -28,15 +28,15 @@ Parallel version 20200122. https://www.gnu.org/software/parallel/ \
 BBtools version 39.06. https://archive.jgi.doe.gov/data-and-tools/software-tools/bbtools/ \
 BWA-mem version  0.7.17. https://bio-bwa.sourceforge.net/ \
 SAMtools version 1.20. https://github.com/samtools/samtools \
-ANGSD version 0.940 \
-NGSLD version 1.20 \
-PruneGraph version 0.4.0 \
-NGSrelate version 2.0 \
-PCANGSD version 1.36.1 \
-MAFFT version 7.526 \
-APE R package version 5.8 \
+ANGSD version 0.940 https://www.popgen.dk/angsd/index.php/ANGSD \
+NGSLD version 1.20 https://github.com/fgvieira/ngsLD \
+PruneGraph version 0.4.0 https://github.com/fgvieira/prune_graph \
+NGSrelate version 2.0 https://github.com/angsd/ngsrelate \
+PCAngsd version 1.36.1 https://www.popgen.dk/software/index.php/PCAngsd \
+MAFFT version 7.526 https://mafft.cbrc.jp/alignment/software/ \
+APE R package version 5.8 https://emmanuelparadis.github.io/ \
 R version 4.3.3 \
-Python version 3.9.25 \
+Python version 3.9.25 
 
 
 
