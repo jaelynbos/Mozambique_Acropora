@@ -35,6 +35,8 @@ PruneGraph version 0.4.0 https://github.com/fgvieira/prune_graph \
 NGSrelate version 2.0 https://github.com/angsd/ngsrelate \
 PCAngsd version 1.36.1 https://www.popgen.dk/software/index.php/PCAngsd \
 MAFFT version 7.526 https://mafft.cbrc.jp/alignment/software/ \
+MatPlotLib Python library version 3.10.8 \
+GGmap R package version 4.0.1 \
 APE R package version 5.8 https://emmanuelparadis.github.io/ \
 R version 4.3.3 \
 Python version 3.9.25 
@@ -91,7 +93,7 @@ After excluding those samples belonging to highly diverged _Acropora_, I proceed
 2.15 Create .glf files for relatedness analysis with angsd_GLFs.sh. Requires: ANGSD. |
 2.16 Calculate relatedness coefficients with ngsrelate.sh. Requires: NGSRelate.\
 2.17 Identify clones with Acropora_moz_relatedness.ipynb. Runs on R kernel. \
-2.18 Exclude clones, identify ancestry groups, test for environmental differences between species, and make Fig. 2 with Acropora_Moz_2ndPCA.ipynb. Runs on R kernel. \ 
+2.18 Exclude clones, identify ancestry groups, test for environmental differences between species, create inputs for GWAS, and make Fig. 2 with Acropora_Moz_2ndPCA.ipynb. Runs on R kernel. \ 
 2.19 Make new list of SNPs with make_snplist2.sh 
 
 ### Windowed FST analysis. 
@@ -99,7 +101,7 @@ After excluding those samples belonging to highly diverged _Acropora_, I proceed
 2.21 Concatenate .saf files and create .sfs files with sfs2.sh. Requires: ANGSD. \
 2.22 Calculate average FSTs between groups with average_fsts.sh. Requires: ANGSD. \
 2.23 Calculate windowed FSTs between groups with windowed_fst.sh. Requires: ANGSD. \
-2.24 Make Fig3 with Acropora_moz_fig3.ipynb. Runs on R kernel. 
+2.24 Make Fig. 3 and Supplemental Fig. 2 with Acropora_moz_fig3.ipynb. Runs on R kernel. 
 
 ### Genetic variability and selective sweeps(?) at HES-1 locus.
 2.25 Create .safs including invariant sites with angsd_safs_allSNPs.sh. Requires: ANGSD. \
@@ -111,6 +113,16 @@ After excluding those samples belonging to highly diverged _Acropora_, I proceed
 2.31 Concatenate *.beagle files across contigs with angsd_concat3.sh \
 2.32 Calculate genome-wide LD by species with ngsld_spp.sh. Requires: NGSLD. 
 
+### GWAS with bleaching.
+This didn't really work out. \
+2.33 Run GWAS with GWAS.sh. Requires: ANGSD. \
+2.34 Concatenate across contigs with gwas_concat.sh \
+2.35 Visualize output with GWAS.ipynb. Runs on R kernel. \
+2.36 Look at other bleaching statistics with Acropora_moz_bleaching.ipynb. Runs on R kernel. 
+
+### Temperature logger figures.
+2.37 Make Fig. 1 (sampling map) with Mozambique_map.R \ 
+2.38 Make Supplemental Table 1 and Supplemental Fig. 1 with Acropora_moz_TempLoggers.ipynb. Runs on Python kernel.
 
 
 
