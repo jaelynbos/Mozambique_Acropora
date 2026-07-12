@@ -121,7 +121,7 @@ This didn't really work out. \
 2.36 Look at other bleaching statistics with Acropora_moz_bleaching.ipynb. Runs on R kernel. 
 
 ### Temperature logger figures.
-2.37 Make Fig. 1 (sampling map) with Mozambique_map.R \ 
+2.37 Make Fig. 1 (sampling map) with Mozambique_map.R \
 2.38 Make Supplemental Table 1 and Supplemental Fig. 1 with Acropora_moz_TempLoggers.ipynb. Runs on Python kernel.
 
 
