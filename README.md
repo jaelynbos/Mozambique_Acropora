@@ -35,8 +35,8 @@ PruneGraph version 0.4.0 https://github.com/fgvieira/prune_graph \
 NGSrelate version 2.0 https://github.com/angsd/ngsrelate \
 PCAngsd version 1.36.1 https://www.popgen.dk/software/index.php/PCAngsd \
 MAFFT version 7.526 https://mafft.cbrc.jp/alignment/software/ \
-MatPlotLib Python library version 3.10.8 \
-GGmap R package version 4.0.1 \
+MatPlotLib Python library version 3.10.8 https://matplotlib.org/ \
+GGmap R package version 4.0.1 https://github.com/dkahle/ggmap \
 APE R package version 5.8 https://emmanuelparadis.github.io/ \
 R version 4.3.3 \
 Python version 3.9.25 
