@@ -7,7 +7,7 @@ All code is associated with the mansucript _Shared genetic variation genetic acr
 The README is organized into four sections: \
 A) Data sources \
 B) Required software \
-C) Bioninformatic pre-processing \
+C) Bioninformatic pre-processing for all samples \
 D) Analysis of _Acropora_ samples from Mozambique \
 E) Comparison with _Acropora_ samples from American Samoa
 
@@ -24,10 +24,11 @@ Metadata will be made available upon publication.
 ## Required software
 Fastp version 0.23.4. https://github.com/opengene/fastp \
 Multiqc version 1.27. https://seqera.io/multiqc/  \
-Parallel version 20200122. https://www.gnu.org/software/parallel/ \
+GNU Parallel version 20200122. https://www.gnu.org/software/parallel/ \
 BBtools version 39.06. https://archive.jgi.doe.gov/data-and-tools/software-tools/bbtools/ \
 BWA-mem version  0.7.17. https://bio-bwa.sourceforge.net/ \
 SAMtools version 1.20. https://github.com/samtools/samtools \
+GNU Datamash version 1.9. https://www.gnu.org/software/datamash/ \
 ANGSD version 0.940 https://www.popgen.dk/angsd/index.php/ANGSD \
 NGSLD version 1.20 https://github.com/fgvieira/ngsLD \
 PruneGraph version 0.4.0 https://github.com/fgvieira/prune_graph \
@@ -38,5 +39,39 @@ APE R package version 5.8 https://emmanuelparadis.github.io/ \
 R version 4.3.3 \
 Python version 3.9.25 
 
+## Bioinformatic pre-processing
+# Pre-processing _Acropora_ samples from Mozambique. 
+Reads from Mozambique are de-multiplexed and merged across lanes. Bioinformatic processing should be conducted using the following scripts in order:
 
+1.1 First trim using trim_funcs.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.2 Deduplicate using clump_batch2.bash to run clumpify2.sh. Requires: Clumpify (from BBtools). \
+1.3 Second trim using trim_funcs2.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.4 Re-pair unpaired reads using repair_2.sh. Requires: BBtools. \
+1.5 Map genes to _Acropora_millepora_ reference using bwa_array.bash to run bwa_amillepora.sh. Requires: BWA. \
+1.6 Sort and index SAMfiles and convert to BAMfiles with samtools_loop.sh Requires: SAMtools. \
+1.7 Measure sequencing depth across sites for each individual, as well as mean and median depth across all individuals with samtools_depth.sh. Requires: SAMtools and GNU Datamash. \
+
+# Pre-processing _Acropora_ samples from American Samoa. 
+Reads dowloaded from NCBI are de-multiplexed and merged across lanes. Bioinformatic processing should be conducted using the following scripts in order, all found in the /Acropora_hyacinthus_pipeline folder: \
+
+1.8 First trim using trim_funcs_Ahyacinthus.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.9 Deduplicate using clumpify_Ahyacinthus.sh. Requires: Clumpify (from BBtools). \
+1.10 Second trim using trim_funcs2_Ahyacinthus.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.11 Re-pair unpaired reads using repair_Ahyacinthus.sh. Requires: BBtools. \
+1.12 Map genes to _Acropora_millepora_ reference using bwa_amillepora_Ahyacinthus.sh. Requires: BWA. \
+
+# Pre-processing _Isopora_ outgroup.
+Bioinformatic processing should be conducted using the following scripts in order, all found in the /isopora_pipeline folder: \
+1.13 First trim using trim_funcs_isopora.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.14 Deduplicate using clumpify_isopora.sh. Requires: Clumpify (from BBtools). \
+1.15 Second trim using trim_funcs2_isopora.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.16 Re-pair unpaired reads using repair_isopora.sh. Requires: BBtools. \
+1.17 Map genes to _Acropora_millepora_ reference using bwa_amillepora_isopora.sh. Requires: BWA. \
+
+
+
+
+
+1.18 Call SNPs with ANGSD1.sh. Requires: ANGSD.
+1.19 Concatenate *.beagle files across contigs with angsd_concat.sh. 
 
