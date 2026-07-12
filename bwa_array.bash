@@ -1,13 +1,11 @@
 #!/bin/bash
 
 FQPATTERN="*_fp2_r1.fq.gz"
-INDIR=/scratch/jbos/Moz_intermediates/repaired
-OUTDIR=/scratch/jbos/Moz_intermediates/amuricata_samfiles
-REF=/home/jbos/ncbi/amuricata_ncbi.fna
-SCRIPT=/home/jbos/Moz_scripts/bwa_amuricata.sh
+INDIR=/scratch/jbos/Moz_intermediates/repaired/
+OUTDIR=/scratch/jbos/Moz_aligned_mil/amillepora_samfiles/
+REF=/home/jbos/ncbi/GCF_013753865.1_Amil_v2.1_genomic.fna
+SCRIPT=/home/jbos/Moz_scripts/bwa_amillepora.sh
 NODES=4
-
-mkdir -p $OUTDIR
 
 module load ohpc 
 module load bwa-mem2
