@@ -13,9 +13,14 @@
 
 module load samtools 
 
-for file in $(ls -v /scratch/jbos/Moz_intermediates/amuricata_samfiles/*.sam | head -n +30)
+DIR=/scratch/jbos/Moz_aligned_mil/amillepora_samfiles
+OUTDIR=/scratch/jbos/Moz_aligned_mil/amillepora_bamfiles
+
+mkdir $OUTDIR
+
+for file in "$DIR"/*.sam
 do
     sample=$(basename "$file" | cut -d. -f1)
-    samtools view --threads 20 -b -F 2308 /scratch/jbos/Moz_intermediates/amuricata_samfiles/$sample.sam \
-    | samtools sort --threads 20 -o /scratch/jbos/Moz_intermediates/amuricata_bamfiles/$sample.sorted.bam
+    samtools view --threads 20 -b -F 2308 $DIR/$sample.sam \
+    | samtools sort --threads 20 -o $OUTDIR/$sample.sorted.bam
 done
