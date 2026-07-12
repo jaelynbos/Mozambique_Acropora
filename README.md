@@ -147,4 +147,4 @@ This didn't really work out. \
 
 # ABBA-BABA testing
 3.15 Do some ABBA-BABA testing of lineages from Mozambique and American Samoa using angsd_abbababa.sh. Requires: ANGSD \
-3.16 Unpack results badly using abbababa.ipynb. Runs on R kernel \ 
+3.16 Unpack results badly using abbababa.ipynb. Runs on R kernel
