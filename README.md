@@ -125,7 +125,7 @@ This didn't really work out. \
 
 ## Comparison with _Acropora_ samples from American Samoa
 
-# SNP calling and linkage filter
+### SNP calling and linkage filter
 3.1 Call SNPs for Mozambique and American Samoa samples together with joint_ANGSD.sh. Requires: ANGSD. \
 3.2 Concatenate *.beagle files across contigs with angsd_joint_concat.sh \
 3.3 Calculate linkage between SNPs with ngsLD_prunegraph_joint.sh. Requires: NGSLD and PruneGraph \
@@ -133,18 +133,18 @@ This didn't really work out. \
 3.5 Make list of SNPs with make_snplist3.sh \
 3.6 Run PCA and ADMIXTURE with joint_PCANGSD.sh. Requires: PCAngsd.
 
-# Making consensus .FASTA files
+### Making consensus .FASTA files
 3.7 Make consensus FASTA files for samples from American Samoa with fasta_consensus_Ahyacinthus.sh. Requires: BWA \
 3.8 Make consensus FASTA file for DB with fasta_consensus_DB.sh. Requires: BWA \
 3.9 Make consensus FASTA file for DA_North with fasta_consensus_DA_North.sh. Requires: BWA \
 3.10 Make consensus FASTA file for DA_South with fasta_consensus_DA_South.sh. Requires: BWA
 
-# Phylogenetic trees
+### Phylogenetic trees
 3.11 Align first gene from each chromosome across samples with mafft_bychrom.sh. Requires: SAMtools and MAFFT. \
 3.12 Make phylogenetic trees for first gene on each chromosome and create Supplemental Fig 3 with Acropora_moz_supplemental_fig3.ipynb. Runs on R kernel. \
 3.13 Align genes within HES-1 using mafft_nucleotide.sh. Requires: SAMtools and MAFFT. \
 3.14 Plot PCAs and gene trees across species using Acropora_moz_fig5.ipynb. Runs on R kernel. 
 
-# ABBA-BABA testing
+### ABBA-BABA testing
 3.15 Do some ABBA-BABA testing of lineages from Mozambique and American Samoa using angsd_abbababa.sh. Requires: ANGSD \
 3.16 Unpack results badly using abbababa.ipynb. Runs on R kernel
