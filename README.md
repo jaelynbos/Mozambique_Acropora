@@ -70,7 +70,7 @@ Bioinformatic processing should be conducted using the following scripts in orde
 ## Analysis of _Acropora_ samples from Mozambique
 
 ### Sorting out bad field IDs
-I was pretty bad at sample collection at the beginning of this project. Steps 2.1 through 2.XX sort out my bad field IDs of highly diverged _Acropora_ \ 
+I was pretty bad at sample collection at the beginning of this project. Steps 2.1 through 2.XX sort out my bad field IDs of highly diverged _Acropora_ \
 2.1 Call SNPs from Mozambique data with ANGSD1.sh. Requires: ANGSD. \
 2.2 Concatenate *.beagle files across contigs with angsd_concat.sh \
 2.3 Select every 1000th SNP with SNP_subset_lazy.sh. \ 
@@ -82,7 +82,7 @@ I was pretty bad at sample collection at the beginning of this project. Steps 2.
 2.9 Calculate FSTs between ancestry groups wiht fst_from_saf.sh. Requires: ANGSD \
 
 ### SNP calling, PCA, and clones for focal species.
-After excluding those samples belonging to highly diverged _Acropora_, I proceeded with analysis for the ancestry groups corresponding to our focal species (the majority of the samples). 
+After excluding those samples belonging to highly diverged _Acropora_, I proceeded with analysis for the ancestry groups corresponding to our focal species (the majority of the samples). \
 2.10 Call SNPs from focal species with ANGSD2.sh. Requires: ANGSD. \
 2.11 Concatenate *.beagle files across contigs with angsd_concat2.sh \
 2.12 Calculate linkage between SNPs with ngsLD_prunegraph.sh. Requires: NGSLD and PruneGraph \
