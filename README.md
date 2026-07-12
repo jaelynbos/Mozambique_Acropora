@@ -53,12 +53,11 @@ Reads from Mozambique are de-multiplexed and merged across lanes. Bioinformatic 
 
 ### Pre-processing _Acropora_ samples from American Samoa. 
 Reads dowloaded from NCBI are de-multiplexed and merged across lanes. Bioinformatic processing should be conducted using the following scripts in order, all found in the /Acropora_hyacinthus_pipeline folder: \
-
 1.8 First trim using trim_funcs_Ahyacinthus.sh. Requires: Fastp, Parallel, and Multiqc. \
 1.9 Deduplicate using clumpify_Ahyacinthus.sh. Requires: Clumpify (from BBtools). \
 1.10 Second trim using trim_funcs2_Ahyacinthus.sh. Requires: Fastp, Parallel, and Multiqc. \
 1.11 Re-pair unpaired reads using repair_Ahyacinthus.sh. Requires: BBtools. \
-1.12 Map genes to _Acropora_millepora_ reference using bwa_amillepora_Ahyacinthus.sh. Requires: BWA. \
+1.12 Map genes to _Acropora_millepora_ reference using bwa_amillepora_Ahyacinthus.sh. Requires: BWA. 
 
 ### Pre-processing _Isopora_ outgroup.
 Bioinformatic processing should be conducted using the following scripts in order, all found in the /isopora_pipeline folder: \
@@ -66,12 +65,38 @@ Bioinformatic processing should be conducted using the following scripts in orde
 1.14 Deduplicate using clumpify_isopora.sh. Requires: Clumpify (from BBtools). \
 1.15 Second trim using trim_funcs2_isopora.sh. Requires: Fastp, Parallel, and Multiqc. \
 1.16 Re-pair unpaired reads using repair_isopora.sh. Requires: BBtools. \
-1.17 Map genes to _Acropora_millepora_ reference using bwa_amillepora_isopora.sh. Requires: BWA. \
+1.17 Map genes to _Acropora_millepora_ reference using bwa_amillepora_isopora.sh. Requires: BWA. 
 
+## Analysis of _Acropora_ samples from Mozambique
 
+### Sorting out bad field IDs
+I was pretty bad at sample collection at the beginning of this project. Steps 2.1 through 2.XX sort out my bad field IDs of highly diverged _Acropora_ \ 
+2.1 Call SNPs from Mozambique data with ANGSD1.sh. Requires: ANGSD. \
+2.2 Concatenate *.beagle files across contigs with angsd_concat.sh \
+2.3 Select every 1000th SNP with SNP_subset_lazy.sh. \ 
+2.4 Run PCA and ADMIXTURE with pcangsd1.sh. Requires: PCAngsd.\
+2.5 Plot PCs and ADMIXTURE groups and make lists of BAMfile for each group with Acropora_Moz_1stPCA.ipynb. Runs on R kernel. \
+2.6 Make list of SNPs included in beagle with make_snplist1.sh \
+2.7 Make SAFs for each ancestry group with angsd_safs.sh. Requires: ANGSD \
+2.8 Make SFS for each ancestry group with sfs.sh. Requires: ANGSD \
+2.9 Calculate FSTs between ancestry groups wiht fst_from_saf.sh. Requires: ANGSD \
 
+### SNP calling, PCA, and clones for focal species.
+After excluding those samples belonging to highly diverged _Acropora_, I proceeded with analysis for the ancestry groups corresponding to our focal species (the majority of the samples). 
+2.10 Call SNPs from focal species with ANGSD2.sh. Requires: ANGSD. \
+2.11 Concatenate *.beagle files across contigs with angsd_concat2.sh \
+2.12 Calculate linkage between SNPs with ngsLD_prunegraph.sh. Requires: NGSLD and PruneGraph \
+2.13 Remove linked SNPs from beagle file with unlink_beagle.sh \
+2.14 Run PCA and ADMIXTURE with pcangsd2.sh. Requires: PCAngsd. \
+2.15 Create .glf files for relatedness analysis with angsd_GLFs.sh. Requires: ANGSD. |
+2.16 Calculate relatedness coefficients with ngsrelate.sh. Requires: NGSRelate.\
+2.17 Identify clones with Acropora_moz_relatedness.ipynb. Runs on R kernel. \
+2.18 Exclude clones, identify ancestry groups, test for environmental differences between species, and make Fig. 2 with Acropora_Moz_2ndPCA.ipynb. Runs on R kernel. \ 
+2.19 Make new list of SNPs with make_snplist2.sh 
 
-
-1.18 Call SNPs with ANGSD1.sh. Requires: ANGSD.
-1.19 Concatenate *.beagle files across contigs with angsd_concat.sh. 
-
+### Windowed FST analysis. 
+2.20 Create new .saf files for calculating FSTs with angsd_safs2.sh. Requires: ANGSD. \
+2.21 Concatenate .saf files and create .sfs files with sfs2.sh. Requires: ANGSD. \
+2.22 Calculate average FSTs between groups with average_fsts.sh. Requires: ANGSD. \
+2.23 Calculate windowed FSTs between groups with windowed_fst.sh. Requires: ANGSD. \
+2.24 Make Fig3 with Acropora_moz_fig3.ipynb. Runs on R kernel. 
