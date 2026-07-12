@@ -11,14 +11,32 @@ C) Bioninformatic pre-processing \
 D) Analysis of _Acropora_ samples from Mozambique \
 E) Comparison with _Acropora_ samples from American Samoa
 
-All pre-processing, mapping, and  analysis was run on the University of California's high performance computing cluster 'Elkhorn' (https://its.ucsc.edu/services/research-computing/research-specific-computing-and-applications/elkhorn-high-performance-computing-cluster/) 
+All pre-processing, mapping, and  analysis was run on the University of California's high performance computing cluster 'Elkhorn' (https://its.ucsc.edu/services/research-computing/research-specific-computing-and-applications/elkhorn-high-performance-computing-cluster/)
 
 ## Data availability
 Reads from Mozambique are not publicly available at this time, pending publication and approval from the Mozambican government.\
 The _Acropora millepora_ reference genome was downloaded from NCBI, at https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_013753865.1/, GenBank assembly GCA_013753865.1 \
 _Acropora aff. hyacinthus_ reads from American Samoa were downloaded from NCBI, at https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA657822, SRA accession PRJNA657822 \
-The _Isopora aff. cuneata_ genome used for outgroup comparison in ABBA-BABA testing was downloaded from NCBI, at https://www.ncbi.nlm.nih.gov/sra/ERX16119961[accn], sample accession SAMEA110183978 \
+The _Isopora aff. cuneata_ genome used for outgroup comparison in ABBA-BABA testing was downloaded from NCBI, at https://www.ncbi.nlm.nih.gov/sra/ERX16119961[accn], sample accession SAMEA110183978.
 
-Metadata will be made publicly available upon publication.
+Metadata will be made available upon publication.
 
 ## Required software
+Fastp version 0.23.4. https://github.com/opengene/fastp \
+Multiqc version 1.27. https://seqera.io/multiqc/  \
+Parallel version 20200122. https://www.gnu.org/software/parallel/ \
+BBtools version 39.06. https://archive.jgi.doe.gov/data-and-tools/software-tools/bbtools/ \
+BWA-mem version  0.7.17. https://bio-bwa.sourceforge.net/ \
+SAMtools version 1.20. https://github.com/samtools/samtools \
+ANGSD version 0.940 \
+NGSLD version 1.20 \
+PruneGraph version 0.4.0 \
+NGSrelate version 2.0 \
+PCANGSD version 1.36.1 \
+MAFFT version 7.526 \
+APE R package version 5.8 \
+R version 4.3.3 \
+Python version 3.9.25 \
+
+
+
