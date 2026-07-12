@@ -100,3 +100,17 @@ After excluding those samples belonging to highly diverged _Acropora_, I proceed
 2.22 Calculate average FSTs between groups with average_fsts.sh. Requires: ANGSD. \
 2.23 Calculate windowed FSTs between groups with windowed_fst.sh. Requires: ANGSD. \
 2.24 Make Fig3 with Acropora_moz_fig3.ipynb. Runs on R kernel. 
+
+### Genetic variability and selective sweeps(?) at HES-1 locus.
+2.25 Create .safs including invariant sites with angsd_safs_allSNPs.sh. Requires: ANGSD. \
+2.26 Concatenate .saf files and create .sfs files with sfs_allSNPs.sh. Requires: ANGSD. \
+2.27 Calculate π, Watterson's θ, and Tajima's D with thetas.sh. Requires: ANGSD. \
+2.28 Calculate π, Watterson's θ, and Tajima's D with thetastat.sh. Requires: ANGSD. \
+2.29 Calculate linkage disequilibrium at the HES-1 locus wiht hes1_ld.sh. Requires: NGSLD. \
+2.30 Create .beagle files for each population (DB, DA_North, DA_South) separately with ANGSD_beagle_by_group.sh. Requires: ANGSD. \
+2.31 Concatenate *.beagle files across contigs with angsd_concat3.sh \
+2.32 Calculate genome-wide LD by species with ngsld_spp.sh. Requires: NGSLD. 
+
+
+
+
