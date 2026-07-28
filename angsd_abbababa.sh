@@ -18,7 +18,7 @@ OUTDIR=/scratch/jbos/abbababa
 
 OUTGROUP=/scratch/jbos/consensus_fastas/isopora.fa.gz
 
-max depth calculated as 234*150+52*20
+#max depth calculated as 234*150+52*20
 
 samtools faidx $OUTGROUP
 
