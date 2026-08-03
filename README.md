@@ -50,7 +50,7 @@ Reads from Mozambique are de-multiplexed and merged across lanes. Bioinformatic 
 1.4 Re-pair unpaired reads using repair_2.sh. Requires: BBtools. \
 1.5 Map genes to _Acropora_millepora_ reference using bwa_array.bash to run bwa_amillepora.sh. Requires: BWA. \
 1.6 Sort and index SAMfiles and convert to BAMfiles with samtools_loop.sh Requires: SAMtools. \
-1.7 Measure sequencing depth across sites for each individual, as well as mean and median depth across all individuals with samtools_depth.sh. Requires: SAMtools and GNU Datamash. \
+1.7 Measure sequencing depth across sites for each individual, as well as mean and median depth across all individuals with samtools_depth.sh. Requires: SAMtools and GNU Datamash.
 
 ### Pre-processing _Acropora_ samples from American Samoa. 
 Reads dowloaded from NCBI are de-multiplexed and merged across lanes. Bioinformatic processing should be conducted using the following scripts in order, all found in the /Acropora_hyacinthus_pipeline folder: \
@@ -74,7 +74,7 @@ Bioinformatic processing should be conducted using the following scripts in orde
 I was pretty bad at sample collection at the beginning of this project. Steps 2.1 through 2.XX sort out my bad field IDs of highly diverged _Acropora_ \
 2.1 Call SNPs from Mozambique data with ANGSD1.sh. Requires: ANGSD. \
 2.2 Concatenate *.beagle files across contigs with angsd_concat.sh \
-2.3 Select every 1000th SNP with SNP_subset_lazy.sh. \ 
+2.3 Select every 1000th SNP with SNP_subset_lazy.sh. \
 2.4 Run PCA and ADMIXTURE with pcangsd1.sh. Requires: PCAngsd.\
 2.5 Plot PCs and ADMIXTURE groups and make lists of BAMfile for each group with Acropora_Moz_1stPCA.ipynb. Runs on R kernel. \
 2.6 Make list of SNPs included in beagle with make_snplist1.sh \
