@@ -45,9 +45,11 @@ Python version 3.9.25
 
 ## Bioinformatic pre-processing
 ### Pre-processing _Acropora_ samples from Mozambique. 
-Samples from Mozambique were pooled and sequenced across three different lanes. Reads on the storage server are de-multiplexed, but not merged across lanes. The three lane directories can be downloaded from the storage server at the beginning of this pipeline - here they are stored in a higher level directory called Moz_reads. \
-Bioinformatic processing should be conducted using the following scripts in order:
-1.1 Merge reads across lanes (forward and reverse reads separately) using lane_merge.sh. Note that this script also has a line to remove _Macrocystis_ reads from a different project that were sequenced on the same lanes. 
+Samples from Mozambique were pooled and sequenced across three different lanes. Reads on the storage server are de-multiplexed, but not merged across lanes. The three lane directories can be downloaded from the storage server at the beginning of this pipeline - here they are stored in a higher level directory called Moz_reads. 
+
+Bioinformatic processing should be conducted using the following scripts in order: 
+
+1.1 Merge reads across lanes (forward and reverse reads separately) using lane_merge.sh. Note that this script also has a line to remove _Macrocystis_ reads from a different project that were sequenced on the same lanes. \
 1.2 First trim using trim_funcs.sh. Requires: Fastp, Parallel, and Multiqc. \
 1.3 Deduplicate using clump_batch2.bash to run clumpify2.sh. Requires: Clumpify (from BBtools). \
 1.4 Second trim using trim_funcs2.sh. Requires: Fastp, Parallel, and Multiqc. \
