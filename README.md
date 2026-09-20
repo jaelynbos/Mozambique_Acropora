@@ -15,11 +15,13 @@ All pre-processing, mapping, and  analysis was run on the University of Californ
 
 ## Data availability
 Reads from Mozambique are not publicly available at this time, pending publication and approval from the Mozambican government.\
+Backups of raw reads are stored on UCSC data storage server 'Bishop' in three directories called MPJB_L1, MPJB_L2, and MPJB_L3, corresponding to three Illumina NovaSeqX sequencing lanes. Metadata is available through LIMS. Do not use data from this project without first contacting Jaelyn due to stringent permitting requirements.
+
 The _Acropora millepora_ reference genome was downloaded from NCBI, at https://www.ncbi.nlm.nih.gov/datasets/genome/GCF_013753865.1/, GenBank assembly GCA_013753865.1 \
 _Acropora aff. hyacinthus_ reads from American Samoa were downloaded from NCBI, at https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA657822, SRA accession PRJNA657822 \
 The _Isopora aff. cuneata_ genome used for outgroup comparison in ABBA-BABA testing was downloaded from NCBI, at https://www.ncbi.nlm.nih.gov/sra/ERX16119961[accn], sample accession SAMEA110183978.
 
-Metadata will be made available upon publication.
+Metadata will also be made publicly available upon publication.
 
 ## Required software
 Fastp version 0.23.4. https://github.com/opengene/fastp \
@@ -43,30 +45,32 @@ Python version 3.9.25
 
 ## Bioinformatic pre-processing
 ### Pre-processing _Acropora_ samples from Mozambique. 
-Reads from Mozambique are de-multiplexed and merged across lanes. Bioinformatic processing should be conducted using the following scripts in order:
-1.1 First trim using trim_funcs.sh. Requires: Fastp, Parallel, and Multiqc. \
-1.2 Deduplicate using clump_batch2.bash to run clumpify2.sh. Requires: Clumpify (from BBtools). \
-1.3 Second trim using trim_funcs2.sh. Requires: Fastp, Parallel, and Multiqc. \
-1.4 Re-pair unpaired reads using repair_2.sh. Requires: BBtools. \
-1.5 Map genes to _Acropora_millepora_ reference using bwa_array.bash to run bwa_amillepora.sh. Requires: BWA. \
-1.6 Sort and index SAMfiles and convert to BAMfiles with samtools_loop.sh Requires: SAMtools. \
-1.7 Measure sequencing depth across sites for each individual, as well as mean and median depth across all individuals with samtools_depth.sh. Requires: SAMtools and GNU Datamash.
+Samples from Mozambique were pooled and sequenced across three different lanes. Reads on the storage server are de-multiplexed, but not merged across lanes. The three lane directories can be downloaded from the storage server at the beginning of this pipeline - here they are stored in a higher level directory called Moz_reads. \
+Bioinformatic processing should be conducted using the following scripts in order:
+1.1 Merge reads across lanes (forward and reverse reads separately) using lane_merge.sh. Note that this script also has a line to remove _Macrocystis_ reads from a different project that were sequenced on the same lanes. 
+1.2 First trim using trim_funcs.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.3 Deduplicate using clump_batch2.bash to run clumpify2.sh. Requires: Clumpify (from BBtools). \
+1.4 Second trim using trim_funcs2.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.5 Re-pair unpaired reads using repair_2.sh. Requires: BBtools. \
+1.6 Map genes to _Acropora_millepora_ reference using bwa_array.bash to run bwa_amillepora.sh. Requires: BWA. \
+1.7 Sort and index SAMfiles and convert to BAMfiles with samtools_loop.sh Requires: SAMtools. \
+1.8 Measure sequencing depth across sites for each individual, as well as mean and median depth across all individuals with samtools_depth.sh. Requires: SAMtools and GNU Datamash.
 
 ### Pre-processing _Acropora_ samples from American Samoa. 
 Reads dowloaded from NCBI are de-multiplexed and merged across lanes. Bioinformatic processing should be conducted using the following scripts in order, all found in the /Acropora_hyacinthus_pipeline folder: \
-1.8 First trim using trim_funcs_Ahyacinthus.sh. Requires: Fastp, Parallel, and Multiqc. \
-1.9 Deduplicate using clumpify_Ahyacinthus.sh. Requires: Clumpify (from BBtools). \
-1.10 Second trim using trim_funcs2_Ahyacinthus.sh. Requires: Fastp, Parallel, and Multiqc. \
-1.11 Re-pair unpaired reads using repair_Ahyacinthus.sh. Requires: BBtools. \
-1.12 Map genes to _Acropora_millepora_ reference using bwa_amillepora_Ahyacinthus.sh. Requires: BWA. 
+1.9 First trim using trim_funcs_Ahyacinthus.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.10 Deduplicate using clumpify_Ahyacinthus.sh. Requires: Clumpify (from BBtools). \
+1.11 Second trim using trim_funcs2_Ahyacinthus.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.12 Re-pair unpaired reads using repair_Ahyacinthus.sh. Requires: BBtools. \
+1.13 Map genes to _Acropora_millepora_ reference using bwa_amillepora_Ahyacinthus.sh. Requires: BWA. 
 
 ### Pre-processing _Isopora_ outgroup.
 Bioinformatic processing should be conducted using the following scripts in order, all found in the /isopora_pipeline folder: \
-1.13 First trim using trim_funcs_isopora.sh. Requires: Fastp, Parallel, and Multiqc. \
-1.14 Deduplicate using clumpify_isopora.sh. Requires: Clumpify (from BBtools). \
-1.15 Second trim using trim_funcs2_isopora.sh. Requires: Fastp, Parallel, and Multiqc. \
-1.16 Re-pair unpaired reads using repair_isopora.sh. Requires: BBtools. \
-1.17 Map genes to _Acropora_millepora_ reference using bwa_amillepora_isopora.sh. Requires: BWA. 
+1.14 First trim using trim_funcs_isopora.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.15 Deduplicate using clumpify_isopora.sh. Requires: Clumpify (from BBtools). \
+1.16 Second trim using trim_funcs2_isopora.sh. Requires: Fastp, Parallel, and Multiqc. \
+1.17 Re-pair unpaired reads using repair_isopora.sh. Requires: BBtools. \
+1.18 Map genes to _Acropora_millepora_ reference using bwa_amillepora_isopora.sh. Requires: BWA. 
 
 ## Analysis of _Acropora_ samples from Mozambique
 
