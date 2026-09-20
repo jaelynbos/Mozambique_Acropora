@@ -34,3 +34,6 @@ do
 
     cat "$f1" "$f2" "$f3" > "/home/jbos/Moz_reads/merged_lanes/${sample}_R.fastq.gz"
 done
+
+mkdir /home/jbos/kelp
+mv /home/jbos/Moz_reads/*M_ARYQ* /home/jbos/kelp
