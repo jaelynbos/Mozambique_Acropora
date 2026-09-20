@@ -23,4 +23,5 @@ do
     sample=$(basename "$file" | cut -d. -f1)
     samtools view --threads 20 -b -F 2308 $DIR/$sample.sam \
     | samtools sort --threads 20 -o $OUTDIR/$sample.sorted.bam
+    samtools index $OUTDIR/$sample.sorted.bam
 done
